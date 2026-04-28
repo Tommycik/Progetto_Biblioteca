@@ -62,7 +62,7 @@ public class Biblioteca {
 
 
     public void stampaInventario(){
-        if(!listaRisorsa.isEmpty()) {// se non la lista non è vuota stampa i dettagli
+        if(!listaRisorse.isEmpty()) {// se non la lista non è vuota stampa i dettagli
             for (Risorsa risorsa : listaRisorse) {
                 risorsa.visualizzaDettagli();
             }
