@@ -27,7 +27,10 @@ public class Main {
             System.out.println("3. Stampa Inventario");
             System.out.println("4. Prendi in prestito una risorsa: ");
             System.out.println("5. Resituisci una risorsa: ");
-            System.out.println("6. Esci");
+            System.out.println("6. Stampa risorse utente: ");
+            System.out.println("7. Cerca risorsa: ");
+            System.out.println("8. Stampa utenti: ");
+            System.out.println("9. Esci");
 
             int scelta = in.nextInt();
             in.nextLine();
@@ -115,7 +118,7 @@ public class Main {
                     // scegli utente
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
-                    Utente utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
+                    utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
                     if (utente == null) {
                         System.out.println("Utente non trovato");
                         break;
@@ -127,7 +130,7 @@ public class Main {
                             ris.visualizzaDettagli();
                         }
                     }
-                    Risorsa risorsaTrovata = null;
+                    risorsaTrovata = null;
                     // 4. Prendi in prestito una risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
                     String nomeRisorsa = in.nextLine();
