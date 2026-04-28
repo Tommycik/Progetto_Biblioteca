@@ -51,7 +51,7 @@ public class Biblioteca {
 
      public void inserisciUtente(Utente nuovoUtente){
         for(Utente utente : listaUtenti){
-            if(utente.getIdUtente().toLowerCase().equals(nuovoUtente.getIdUtente().toLowerCase())){
+            if(utente.getIdUtente().equalsIgnoreCase(nuovoUtente.getIdUtente())){
                 System.out.println("Esiste già un utente con questo Codice: "+utente.getIdUtente());
                 return;// esci dal metodo
             }
@@ -81,6 +81,14 @@ public class Biblioteca {
         }
         return risorseTrovate;
     }
-
+    //cerca utente per id
+    public Utente cercaUtentePerId(String idUtente){
+        for(Utente utente : listaUtenti){
+            if(utente.getIdUtente().equalsIgnoreCase(idUtente)){
+                return utente;
+            }
+        }
+        return null;
+    }
 
 }

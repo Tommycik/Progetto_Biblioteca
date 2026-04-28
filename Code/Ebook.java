@@ -18,7 +18,7 @@ public class Ebook extends Risorsa{
     //override stampa risorsa
     @Override
     public void visualizzaDettagli() {
-        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Formato: " + this.getFormato());
+        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Formato: " + this.getFormato() + " Disponibile: " + this.isDisponibile());
     }
     
 }

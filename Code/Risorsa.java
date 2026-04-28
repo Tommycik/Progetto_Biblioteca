@@ -40,7 +40,7 @@ public abstract class Risorsa {
 
     //stampa risorsa
     public void visualizzaDettagli(){
-        System.out.println("Titolo: " + this.titolo + " Anno: " + this.annoPubblicazione + " Codice: " + this.codice);
+        System.out.println("Titolo: " + this.titolo + " Anno: " + this.annoPubblicazione + " Codice: " + this.codice + " Disponibile: " + this.disponibile);
     }
     
 }

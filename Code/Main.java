@@ -1,5 +1,6 @@
 package Code;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Main {
         String id = in.nextLine();
         Risorsa risorsa= new Libro("Il libro di Napoli", 2021, "123456789", "Napoleone Bonaparte");
         Utente utente = new Utente(nome, id);
+        biblioteca.inserisciUtente(utente);
         biblioteca.inserisciRisorsa(risorsa);
         while(true){// 2. Menu per inserire una risorsa
             System.out.println("\n--- Menu ---");
@@ -36,9 +38,9 @@ public class Main {
                     idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
 
-                case 2
-                    // 2. Aggiungi Risorsa
-                    System.out.print("Inserisci il titolo della risorsa: ");
+                case 2:
+                     // 2. Aggiungi Risorsa
+                    /*System.out.print("Inserisci il titolo della risorsa: ");
                     String titolo = in.nextLine();
                     System.out.print("Inserisci l'autore della risorsa: ");
                     String autore = in.nextLine();
@@ -48,7 +50,7 @@ public class Main {
                     Risorsa nuovaRisorsa = new Risorsa(titolo, autore, anno);
                     biblioteca.inserisciRisorsa(nuovaRisorsa);
                     System.out.println("Risorsa aggiunta con successo");
-                    break;
+                    break;*/
                 
                 case 3:
                     // 3. Stampa Inventario
@@ -64,22 +66,28 @@ public class Main {
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
                     Utente utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
-                    if(utente==null){
+                    if(utenteAttivo==null){
                         System.out.println("Utente non trovato");
                         break;
                     }
                     System.out.println("Risorse disponibili:");
+                    ArrayList<Risorsa> risorseDisponibili = new ArrayList<Risorsa>();
                     for(Risorsa ris : biblioteca.getListaRisorse()){
                         if(ris.isDisponibile()){
                             ris.visualizzaDettagli();
+                            risorseDisponibili.add(ris);
                         }
+                    }
+                    if(risorseDisponibili.isEmpty()){
+                        System.out.println("Nessuna risorsa disponibile");
+                        break;
                     }
                     Risorsa risorsaTrovata = null;
                     // 4. Prendi in prestito una risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
                     String nomeRisorsa = in.nextLine();
                     ArrayList<Risorsa> risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
-                    if(risorse.size()==0){
+                    if(risorse.isEmpty()){
                         System.out.println("Risorsa non trovata");
                         break;
                     }else if(risorse.size()>1){

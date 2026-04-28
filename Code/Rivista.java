@@ -19,7 +19,7 @@ public class Rivista extends Risorsa{
     //override stampa risorsa
     @Override
     public void visualizzaDettagli() {
-        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Numero: " + this.getNumero());
+        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Numero: " + this.getNumero() + " Disponibile: " + this.isDisponibile());
     }
 
     
