@@ -19,8 +19,8 @@ public class Main {
         System.out.println("\n--- Menu ---");
         System.out.println("1. Aggiungi Utente");
         System.out.println("2. Aggiungi Risorsa");
-        System.out.println("3. Cerca Risorsa per Titolo");
-        System.out.print("Scegli un'opzione in prestito: ");
+        System.out.println("3. Stampa Inventario");
+        System.out.print("Prendi in prestito una risorsa: ");
         int scelta = in.nextInt();
         in.nextLine(); 
 
