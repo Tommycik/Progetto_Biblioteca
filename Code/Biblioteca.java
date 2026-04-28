@@ -5,14 +5,16 @@ import java.util.ArrayList;
 public class Biblioteca {
     private String nomeBiblioteca;// nome della Biblioteca
     private ArrayList<Risorsa>listaRisorse;//Lista della risorsa
-    private ArrayList<Utente>listaUtenti;//Lista degli
+    private ArrayList<Utente>listaUtenti;//Lista degli utenti
 
+    //costruttore
     public Biblioteca(String nomeBiblioteca) {
         this.nomeBiblioteca = nomeBiblioteca;
         this.listaRisorse = new ArrayList<>();
         this.listaUtenti = new ArrayList<>();
     }
 
+    //getter e setter
     public String getNomeBiblioteca() {
         return nomeBiblioteca;
     }
@@ -37,18 +39,19 @@ public class Biblioteca {
         this.listaRisorse = listaRisorse;
     }
 
-       public void inserisciRisorsa(Risorsa risorsa){
+    //inserisce risorsa
+    public void inserisciRisorsa(Risorsa risorsa){
         for(Risorsa ris : listaRisorse){
             if(ris.getCodice().toLowerCase().equals(risorsa.getCodice().toLowerCase())){
                 System.out.println("Esiste già una risorsa con questo Codice: "+ris.getCodice());
                 return;// esci dal metodo
             }
-     }
-     System.out.println("Risorsa Aggiunta");
-     listaRisorse.add(risorsa);
+        }  
+        System.out.println("Risorsa Aggiunta");
+        listaRisorse.add(risorsa);
     }
 
-
+    //inserisce utente
      public void inserisciUtente(Utente nuovoUtente){
         for(Utente utente : listaUtenti){
             if(utente.getIdUtente().equalsIgnoreCase(nuovoUtente.getIdUtente())){
@@ -60,7 +63,7 @@ public class Biblioteca {
         listaUtenti.add(nuovoUtente);
     }
 
-
+    //stampa inventario
     public void stampaInventario(){
         if(!listaRisorse.isEmpty()) {// se non la lista non è vuota stampa i dettagli
             for (Risorsa risorsa : listaRisorse) {
@@ -71,7 +74,7 @@ public class Biblioteca {
         }
         
     }
-
+    //cerca risorsa per titolo
     public ArrayList<Risorsa> cercaRisorsaPerTitolo(String titolo){
        ArrayList<Risorsa> risorseTrovate = new ArrayList<>();
         for (Risorsa risorsa : listaRisorse){
