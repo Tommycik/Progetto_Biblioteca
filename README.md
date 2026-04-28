@@ -4,10 +4,10 @@
 ### Anna
 Classe utente
 Main
-###Tommaso
+### Tommaso
 Classe Risorsa,Ebook,Libro e Rivista
 README
-###Giuseppe
+### Giuseppe
 Classe biblioteca
 
 ## Istruzioni
