@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Biblioteca biblioteca = new Biblioteca("Biblioteca di napoli");
         Scanner in = new Scanner(System.in);
 
         // 1. Creazione Utente e registrazione
@@ -32,7 +33,17 @@ public class Main {
                     System.out.print("Inserisci l'ID dell'utente: ");
                     String idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
-                    
+                case 3:
+                    // 3. Stampa Inventario
+                    biblioteca.stampaInventario();
+                    break;
+                case 5:
+                    System.out.println("Arrivederci");
+                    return;
+                default:
+                    System.out.println("Scelta non valida");
+                    break;
+            }
             }
         }
     }
