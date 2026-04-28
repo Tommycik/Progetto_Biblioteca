@@ -12,7 +12,22 @@ public class Utente { // classe Utente
         this.idUtente = idUtente;
         this.risorseInPrestito = new ArrayList<>();
     }
+    // getter e setter
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getIdUtente() {
+        return idUtente;
+    }
+
+    public void setIdUtente(String idUtente) {
+        this.idUtente = idUtente;
+    }
     // Metodo per prendere in prestito
     public void prendiInPrestito(Risorsa r) {
         risorseInPrestito.add(r);
