@@ -48,16 +48,16 @@ public class Biblioteca {
      listaRisorsa.add(risorsa);
     }
 
+
      public void inserisciUtente(Utente nuovoUtente){
         for(Utente utente : listaUtenti){
-            if(listaUtenti.getCodice().equals(nuovoUtente.getCodice)){
-                System.out.println("Esiste già un utente con questo Codice: "+utente.getCodice());
+            if(utente.getIdUtente().toLowerCase().equals(nuovoUtente.getIdUtente().toLowerCase())){
+                System.out.println("Esiste già un utente con questo Codice: "+utente.getIdUtente());
                 return;// esci dal metodo
             }
         }
         System.out.println("Utente Aggiunta");
         listaUtenti.add(nuovoUtente);
-        
     }
 
 
