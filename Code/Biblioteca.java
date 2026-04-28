@@ -48,17 +48,29 @@ public class Biblioteca {
      listaRisorsa.add(risorsa);
     }
 
-    public void inserisciUtente(Utente utente){
-        this.listaUtenti.add(utente);
+     public void inserisciUtente(Utente nuovoUtente){
+        for(Utente utente : listaUtenti){
+            if(listaUtenti.getCodice().equals(nuovoUtente.getCodice)){
+                System.out.println("Esiste già un utente con questo Codice: "+utente.getCodice());
+                return;// esci dal metodo
+            }
+        }
+        System.out.println("Utente Aggiunta");
+        listaUtenti.add(nuovoUtente);
+        
     }
 
 
     public void stampaInventario(){
-        for (Risorsa risorsa : listaRisorsa){
-           risorsa.visualizzaDettagli();
+        if(!listaRisorsa.isEmpty()) {// se non la lista non è vuota stampa i dettagli
+            for (Risorsa risorsa : listaRisorsa) {
+                risorsa.visualizzaDettagli();
+            }
+        }else{//Altrimenti stampa il messaggio di errore
+            System.out.println("Errore: Non ci sono Risorse inserisci almeno una risorsa!");
         }
+        
     }
-
 
     public ArrayList<Risorsa> cercaRisorsaPerTitolo(String titolo){
        ArrayList<Risorsa> risorsaTrovata = new ArrayList<>();
