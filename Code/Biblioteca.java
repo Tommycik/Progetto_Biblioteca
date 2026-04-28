@@ -56,7 +56,7 @@ public class Biblioteca {
                 return;// esci dal metodo
             }
         }
-        System.out.println("Utente Aggiunta");
+        System.out.println("Utente Aggiunto");
         listaUtenti.add(nuovoUtente);
     }
 
