@@ -37,8 +37,15 @@ public class Biblioteca {
         this.listaRisorsa = listaRisorsa;
     }
 
-    public void inserisciRisorsa(Risorsa risorsa){
-        this.listaRisorsa.add(risorsa);
+       public void inserisciRisorsa(Risorsa risorsa){
+     for(Risorsa risorsaRisorsa : listaRisorsa){
+         if(listaRisorsa.getCodice().equalsCaseIgnore(risorsaRisorsa.getCodice)){
+             System.out.println("Esiste già una risorsa con questo Codice: "+risorsaRisorsa.getCodice());
+             return;// esci dal metodo
+         }
+     }
+     System.out.println("Risorsa Aggiunta");
+     listaRisorsa.add(risorsa);
     }
 
     public void inserisciUtente(Utente utente){
