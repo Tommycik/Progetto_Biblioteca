@@ -23,5 +23,15 @@ public class Main {
         System.out.print("Scelta: ");
         int scelta = in.nextInt();
         in.nextLine(); 
+
+        Risorsa risorsaScelta = null;
+        switch (scelta) {
+            case 1:
+                System.out.print("Inserisci l'autore: ");
+                String autore = in.nextLine();
+                risorsaScelta = new Libro(getTitolo, annoPubblicazione, codice, autore);
+                break;
+        }
+
     }
 }
