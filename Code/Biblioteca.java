@@ -73,7 +73,7 @@ public class Biblioteca {
     }
 
     public ArrayList<Risorsa> cercaRisorsaPerTitolo(String titolo){
-       ArrayList<Risorsa> risorsaTrovata = new ArrayList<>();
+       ArrayList<Risorsa> risorseTrovate = new ArrayList<>();
         for (Risorsa risorsa : listaRisorse){
             if(risorsa.getTitolo().equalsIgnoreCase(titolo)){
                 risorsaTrovata.add(risorsa);
