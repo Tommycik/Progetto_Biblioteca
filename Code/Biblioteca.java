@@ -53,16 +53,14 @@ public class Biblioteca {
     }
 
 
-    public String cercaRisorsaPerTitolo(String titolo){
-        String risorsa = "Nesuna Risorsa";
+    public ArrayList<Risorsa> cercaRisorsaPerTitolo(String titolo){
+       ArrayList<Risorsa> risorsaTrovata = new ArrayList<>();
         for (Risorsa risorsa : listaRisorsa){
-            if(risorsa.getTitolo().equaslCaseIgnore(titolo)){
-                risorsa = risorsa.getTitolo());
-                 break;
+            if(risorsa.getTitolo().equalsIgnoreCase(titolo)){
+                risorsaTrovata.add(risorsa);
             }
         }
-
-        return risorsa;
+        return risorsaTrovata;
     }
 
 
