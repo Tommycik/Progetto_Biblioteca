@@ -24,10 +24,7 @@ public class Utente { // classe Utente
     public String getIdUtente() {
         return idUtente;
     }
-
-    public void setIdUtente(String idUtente) {
-        this.idUtente = idUtente;
-    }
+    
     public ArrayList<Risorsa> getRisorseInPrestito() {
         return risorseInPrestito;
     }
