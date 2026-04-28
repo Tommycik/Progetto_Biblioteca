@@ -1,26 +1,26 @@
 package Code;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Creazione Biblioteca
         Biblioteca biblioteca = new Biblioteca("Biblioteca di napoli");
+        // Creazione Scanner
         Scanner in = new Scanner(System.in);
-
-        // Creazione Utente e registrazione di rpova 
+        // Creazione Utente e registrazione di rpova
         System.out.println("--- Registrazione Nuovo Utente ---");
         System.out.print("Inserisci il nome: ");
         String nome = in.nextLine();
         System.out.print("Inserisci l'ID Utente: ");
         String id = in.nextLine();
-        Risorsa risorsa= new Libro("Il libro di Napoli", 2021, "123456789", "Napoleone Bonaparte");
+        Risorsa risorsa = new Libro("Il libro di Napoli", 2021, "123456789", "Napoleone Bonaparte");
         Utente utente = new Utente(nome, id);
         biblioteca.inserisciUtente(utente);
         biblioteca.inserisciRisorsa(risorsa);
 
-        while(true){// 2. Menu per inserire una risorsa
+        while (true) {// 2. Menu generale
             System.out.println("\n--- Menu ---");
             System.out.println("1. Aggiungi Utente");
             System.out.println("2. Aggiungi Risorsa");
@@ -30,12 +30,13 @@ public class Main {
             System.out.println("6. Esci");
 
             int scelta = in.nextInt();
-            in.nextLine(); 
+            in.nextLine();
             String idUtente;
             Utente utenteAttivo;
             Risorsa risorsaTrovata = null;
             switch (scelta) {
                 case 1:
+                    // 1. Aggiungi Utente
                     System.out.print("Inserisci il nome dell'utente: ");
                     String nomeUtente = in.nextLine();
                     System.out.print("Inserisci l'ID dell'utente: ");
@@ -45,15 +46,16 @@ public class Main {
                     break;
 
                 case 2:
+                    // 2. Aggiungi Risorsa
                     System.out.print("Inserisci il titolo: ");
                     String titolo = in.nextLine();
                     System.out.print("Inserisci l'anno di pubblicazione: ");
                     int anno = in.nextInt();
-                    in.nextLine(); 
+                    in.nextLine();
                     System.out.print("Inserisci il codice: ");
                     String codice = in.nextLine();
 
-
+                    // Scelta tipo di risorsa
                     System.out.println("Che tipo di risorsa vuoi inserire?");
                     System.out.println("1. Libro");
                     System.out.println("2. Ebook");
@@ -87,111 +89,124 @@ public class Main {
                     if (nuovaRisorsa != null) {
                         biblioteca.inserisciRisorsa(nuovaRisorsa);
                     }
-                    break;  
-                
+                    break;
+
                 case 3:
                     // 3. Stampa Inventario
                     biblioteca.stampaInventario();
                     break;
                 case 4:
-                    //mostrare risorse disponibili
-                    if(biblioteca.getListaRisorse().isEmpty()){
+
+                    // 4. Prendi in prestito una risorsa
+
+                    if (biblioteca.getListaRisorse().isEmpty()) {
                         System.out.println("Nessuna risorsa presente");
                         break;
                     }
-                    //mostra utenti
-                    if(biblioteca.getListaUtenti().isEmpty()){
+
+                    // mostra utenti
+                    if (biblioteca.getListaUtenti().isEmpty()) {
                         System.out.println("Nessun utente presente");
                         break;
                     }
+
                     System.out.println("Utenti presenti:");
-                    for(Utente u : biblioteca.getListaUtenti()){
-                        System.out.println("Id: "+u.getIdUtente()+" Nome: "+u.getNome());
+                    for (Utente u : biblioteca.getListaUtenti()) {
+                        System.out.println("Id: " + u.getIdUtente() + " Nome: " + u.getNome());
                     }
-                    //scegli utente e prendi in prestito una risorsa
+
+                    // scegli utente
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
                     utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
-                    if(utenteAttivo==null){
+                    if (utenteAttivo == null) {
                         System.out.println("Utente non trovato");
                         break;
                     }
-                    //controlla se ci sono risorse disponibili
+                    // controlla se ci sono risorse disponibili
                     System.out.println("Risorse disponibili:");
                     ArrayList<Risorsa> risorseDisponibili = biblioteca.restituisciRisorseDisponibili();
-                    //scelta tra le risorse disponibili
-                    if(risorseDisponibili.isEmpty()){
+                    // scelta tra le risorse disponibili
+                    if (risorseDisponibili.isEmpty()) {
                         System.out.println("Nessuna risorsa disponibile");
                         break;
-                    }else{
-                        for(Risorsa ris : risorseDisponibili){
+                    } else {
+                        for (Risorsa ris : risorseDisponibili) {
                             ris.visualizzaDettagli();
                         }
                     }
                     risorsaTrovata = null;
-                    // prendi in prestito una risorsa con nome
+                    // prendi in prestito la risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
                     String nomeRisorsa = in.nextLine();
                     ArrayList<Risorsa> risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
-                    //controlla quante risorse sono state trovate
-                    if(risorse.isEmpty()){
+                    // controlla quante risorse sono state trovate
+
+                    if (risorse.isEmpty()) {
                         System.out.println("Risorsa non trovata");
                         break;
-                    }else if(risorse.size()>1){
+                    } else if (risorse.size() > 1) {
+
                         // Scelta tra le risorse trovate
                         System.out.println("Scegli una risorsa: ");
-                        for(int i=0;i<risorse.size();i++){
-                            System.out.println(i+": ");
+                        for (int i = 0; i < risorse.size(); i++) {
+                            System.out.println(i + ": ");
                             risorse.get(i).visualizzaDettagli();
                         }
-                        System.out.print("Inserisci la risorsa: ");
-                        int sceltaRisorsa = in.nextInt();
-                        in.nextLine();
-                        risorsaTrovata = risorse.get(sceltaRisorsa);
+
+                        System.out.print("Inserisci codice della risorsa: ");
+                        String codiceRisorsa = in.nextLine();
+                        for (Risorsa ris : risorse) {
+                            if (ris.getCodice().equalsIgnoreCase(codiceRisorsa)) {
+                                risorsaTrovata = ris;
+                                break;
+                            }
+                        }
                         utenteAttivo.prendiInPrestito(risorsaTrovata);
-                        //biblioteca.inserisciRisorsa(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
-                    }else{
+                    } else {
                         risorsaTrovata = risorse.get(0);
                         utenteAttivo.prendiInPrestito(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     }
                     break;
                 case 5:
-                    //mostra utenti
-                    if(biblioteca.getListaUtenti().isEmpty()){
+                    // 5. Resituisci una risorsa
+                    // mostra utenti
+                    if (biblioteca.getListaUtenti().isEmpty()) {
                         System.out.println("Nessun utente presente");
                         break;
                     }
                     System.out.println("Utenti presenti:");
-                    for(Utente u : biblioteca.getListaUtenti()){
-                        System.out.println("Id: "+u.getIdUtente()+" Nome: "+u.getNome());
+                    for (Utente u : biblioteca.getListaUtenti()) {
+                        System.out.println("Id: " + u.getIdUtente() + " Nome: " + u.getNome());
                     }
-                    //scegli utente e prendi in prestito una risorsa
+
+                    // scegli utente
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
                     utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
-                    if(utenteAttivo==null){
+                    if (utenteAttivo == null) {
                         System.out.println("Utente non trovato");
                         break;
                     }
-                    if(utenteAttivo.getRisorseInPrestito().isEmpty()){
+                    if (utenteAttivo.getRisorseInPrestito().isEmpty()) {
                         System.out.println("Nessuna risorsa in prestito");
                         break;
                     }
-                    //stampa lista risorse utente
+                    // stampa lista risorse utente
                     System.out.println("Risorse prese in prestito:");
                     utenteAttivo.stampaRisorse();
-                    //sceglie una risorsa
+                    // sceglie una risorsa
                     System.out.print("Inserisci il codice della risorsa: ");
                     String codiceRisorsa = in.nextLine();
-                    for(Risorsa ris : utenteAttivo.getRisorseInPrestito()){
-                        if(ris.getCodice().equalsIgnoreCase(codiceRisorsa)){
+                    for (Risorsa ris : utenteAttivo.getRisorseInPrestito()) {
+                        if (ris.getCodice().equalsIgnoreCase(codiceRisorsa)) {
                             risorsaTrovata = ris;
                             break;
                         }
                     }
-                    if(risorsaTrovata==null){
+                    if (risorsaTrovata == null) {
                         System.out.println("Risorsa non trovata");
                         break;
                     }
@@ -199,9 +214,11 @@ public class Main {
                     System.out.println("Risorsa restituita");
                     break;
                 case 6:
+                    // 6. Esci
                     System.out.println("Arrivederci");
                     return;
                 default:
+                    // Scelta non valida
                     System.out.println("Scelta non valida");
                     break;
             }

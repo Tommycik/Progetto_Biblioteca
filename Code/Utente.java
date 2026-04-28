@@ -47,7 +47,7 @@ public class Utente { // classe Utente
     public void stampaRisorse() {
         System.out.println("Risorse di " + nome + ":");
         for (Risorsa r : risorseInPrestito) {
-            System.out.println("Titolo: " + r.getTitolo() + "Codice: " + r.getCodice());
+            System.out.println("Titolo: " + r.getTitolo() + " Codice: " + r.getCodice());
         }
     }
 }
