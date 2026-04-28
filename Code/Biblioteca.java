@@ -76,10 +76,10 @@ public class Biblioteca {
        ArrayList<Risorsa> risorseTrovate = new ArrayList<>();
         for (Risorsa risorsa : listaRisorse){
             if(risorsa.getTitolo().equalsIgnoreCase(titolo)){
-                risorsaTrovata.add(risorsa);
+                risorseTrovate.add(risorsa);
             }
         }
-        return risorsaTrovata;
+        return risorseTrovate;
     }
 
 
