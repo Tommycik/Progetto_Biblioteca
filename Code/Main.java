@@ -162,6 +162,11 @@ public class Main {
                                 break;
                             }
                         }
+                        // controlla se la risorsa è stata trovata
+                        if(risorsaTrovata==null){
+                            System.out.println("Risorsa non trovata");
+                            break;
+                        }
                         utenteAttivo.prendiInPrestito(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     } else {
@@ -186,10 +191,12 @@ public class Main {
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
                     utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
+                    // controlla se l'utente esiste
                     if (utenteAttivo == null) {
                         System.out.println("Utente non trovato");
                         break;
                     }
+                    // controlla se ci sono risorse in prestito
                     if (utenteAttivo.getRisorseInPrestito().isEmpty()) {
                         System.out.println("Nessuna risorsa in prestito");
                         break;
@@ -200,12 +207,14 @@ public class Main {
                     // sceglie una risorsa
                     System.out.print("Inserisci il codice della risorsa: ");
                     String codiceRisorsa = in.nextLine();
+                    // controlla se la risorsa esiste
                     for (Risorsa ris : utenteAttivo.getRisorseInPrestito()) {
                         if (ris.getCodice().equalsIgnoreCase(codiceRisorsa)) {
                             risorsaTrovata = ris;
                             break;
                         }
                     }
+                    //controlla se la risorsa è stata trovata
                     if (risorsaTrovata == null) {
                         System.out.println("Risorsa non trovata");
                         break;
