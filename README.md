@@ -6,8 +6,9 @@ Classe utente
 Main
 ### Tommaso
 Classe Risorsa,Ebook,Libro e Rivista
+Biblioteca
 README
 ### Giuseppe
-Classe biblioteca
+Classe Biblioteca
 
 ## Istruzioni
