@@ -90,5 +90,15 @@ public class Biblioteca {
         }
         return null;
     }
+    //restituisce risorse disponibili
+    public ArrayList<Risorsa> restituisciRisorseDisponibili(){
+        ArrayList<Risorsa> risorseDisponibili = new ArrayList<>();
+        for(Risorsa ris : listaRisorse){
+            if(ris.isDisponibile()){
+                risorseDisponibili.add(ris);
+            }
+        }
+        return risorseDisponibili;
+    }
 
 }

@@ -70,17 +70,17 @@ public class Main {
                         System.out.println("Utente non trovato");
                         break;
                     }
+                    //controlla se ci sono risorse disponibili
                     System.out.println("Risorse disponibili:");
-                    ArrayList<Risorsa> risorseDisponibili = new ArrayList<Risorsa>();
-                    for(Risorsa ris : biblioteca.getListaRisorse()){
-                        if(ris.isDisponibile()){
-                            ris.visualizzaDettagli();
-                            risorseDisponibili.add(ris);
-                        }
-                    }
+                    ArrayList<Risorsa> risorseDisponibili = biblioteca.restituisciRisorseDisponibili();
+                    //scelta tra le risorse disponibili
                     if(risorseDisponibili.isEmpty()){
                         System.out.println("Nessuna risorsa disponibile");
                         break;
+                    }else{
+                        for(Risorsa ris : risorseDisponibili){
+                            ris.visualizzaDettagli();
+                        }
                     }
                     Risorsa risorsaTrovata = null;
                     // 4. Prendi in prestito una risorsa con nome
