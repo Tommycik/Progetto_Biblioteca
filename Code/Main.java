@@ -82,7 +82,7 @@ public class Main {
                 case 4:
                     //mostrare risorse disponibili
                     if(biblioteca.getListaRisorse().isEmpty()){
-                        System.out.println("Nessuna risorsa disponibile");
+                        System.out.println("Nessuna risorsa presente");
                         break;
                     }
                     //scegli utente e prendi in prestito una risorsa
@@ -106,10 +106,11 @@ public class Main {
                         }
                     }
                     Risorsa risorsaTrovata = null;
-                    // 4. Prendi in prestito una risorsa con nome
+                    // prendi in prestito una risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
                     String nomeRisorsa = in.nextLine();
                     ArrayList<Risorsa> risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
+                    //controlla quante risorse sono state trovate
                     if(risorse.isEmpty()){
                         System.out.println("Risorsa non trovata");
                         break;
