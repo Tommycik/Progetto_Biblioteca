@@ -67,7 +67,7 @@ public class Biblioteca {
                 risorsa.visualizzaDettagli();
             }
         }else{//Altrimenti stampa il messaggio di errore
-            System.out.println("Errore: Non ci sono Risorse inserisci almeno una risorsa!");
+            System.out.println("Nessuna risorsa all'interno della biblioteca");
         }
         
     }

@@ -21,8 +21,8 @@ public class Main {
             System.out.println("1. Aggiungi Utente");
             System.out.println("2. Aggiungi Risorsa");
             System.out.println("3. Stampa Inventario");
-            System.out.print("4. Prendi in prestito una risorsa: ");
-            System.out.print("5. Esci");
+            System.out.println("4. Prendi in prestito una risorsa: ");
+            System.out.println("5. Esci");
 
             int scelta = in.nextInt();
             in.nextLine(); 
