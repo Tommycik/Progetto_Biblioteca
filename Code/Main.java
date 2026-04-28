@@ -17,6 +17,7 @@ public class Main {
         String id = in.nextLine();
         Risorsa risorsa = new Libro("Il libro di Napoli", 2021, "123456789", "Napoleone Bonaparte");
         Utente utente = new Utente(nome, id);
+        biblioteca.inserisciUtente(utente);
         biblioteca.inserisciRisorsa(risorsa);
         while (true) {// 2. Menu per inserire una risorsa
             System.out.println("\n--- Menu ---");
@@ -36,6 +37,8 @@ public class Main {
                     System.out.print("Inserisci l'ID dell'utente: ");
                     idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
+                    biblioteca.inserisciUtente(nuovoUtente);
+                    break;
 
                 case 2:
                     System.out.print("Inserisci il titolo: ");
@@ -102,6 +105,7 @@ public class Main {
                         System.out.println("Utente non trovato");
                         break;
                     }
+                    //controlla se ci sono risorse disponibili
                     System.out.println("Risorse disponibili:");
                     for (Risorsa ris : biblioteca.getListaRisorse()) {
                         if (ris.isDisponibile()) {

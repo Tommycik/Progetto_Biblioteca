@@ -51,12 +51,12 @@ public class Biblioteca {
 
      public void inserisciUtente(Utente nuovoUtente){
         for(Utente utente : listaUtenti){
-            if(utente.getIdUtente().toLowerCase().equals(nuovoUtente.getIdUtente().toLowerCase())){
+            if(utente.getIdUtente().equalsIgnoreCase(nuovoUtente.getIdUtente())){
                 System.out.println("Esiste già un utente con questo Codice: "+utente.getIdUtente());
                 return;// esci dal metodo
             }
         }
-        System.out.println("Utente Aggiunta");
+        System.out.println("Utente Aggiunto");
         listaUtenti.add(nuovoUtente);
     }
 
@@ -81,6 +81,24 @@ public class Biblioteca {
         }
         return risorseTrovate;
     }
-
+    //cerca utente per id
+    public Utente cercaUtentePerId(String idUtente){
+        for(Utente utente : listaUtenti){
+            if(utente.getIdUtente().equalsIgnoreCase(idUtente)){
+                return utente;
+            }
+        }
+        return null;
+    }
+    //restituisce risorse disponibili
+    public ArrayList<Risorsa> restituisciRisorseDisponibili(){
+        ArrayList<Risorsa> risorseDisponibili = new ArrayList<>();
+        for(Risorsa ris : listaRisorse){
+            if(ris.isDisponibile()){
+                risorseDisponibili.add(ris);
+            }
+        }
+        return risorseDisponibili;
+    }
 
 }

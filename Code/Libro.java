@@ -18,7 +18,7 @@ public class Libro extends Risorsa{
     //override stampa risorsa
     @Override
     public void visualizzaDettagli() {
-        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Autore: " + this.getAutore());
+        System.out.println("Titolo: " + this.getTitolo() + " Anno: " + this.getAnnoPubblicazione() + " Codice: " + this.getCodice() + " Autore: " + this.getAutore() + " Disponibile: " + this.isDisponibile());
     }
     
 }
