@@ -16,22 +16,14 @@ public class Main {
         Utente utente = new Utente(nome, id);
 
         // 2. Menu per inserire una risorsa
-        System.out.println("\n--- Cosa vuoi prendere in prestito? ---");
-        System.out.println("1. Libro");
-        System.out.println("2. Ebook");
-        System.out.println("3. Rivista");
-        System.out.print("Scelta: ");
+        System.out.println("\n--- Menu ---");
+        System.out.println("1. Aggiungi Utente");
+        System.out.println("2. Aggiungi Risorsa");
+        System.out.println("3. Cerca Risorsa per Titolo");
+        System.out.print("Scegli un'opzione in prestito: ");
         int scelta = in.nextInt();
         in.nextLine(); 
 
-        Risorsa risorsaScelta = null;
-        switch (scelta) {
-            case 1:
-                System.out.print("Inserisci l'autore: ");
-                String autore = in.nextLine();
-                risorsaScelta = new Libro(getTitolo, annoPubblicazione, codice, autore);
-                break;
-        }
 
     }
 }
