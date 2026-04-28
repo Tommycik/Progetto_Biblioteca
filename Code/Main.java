@@ -269,7 +269,7 @@ public class Main {
                     break;
                     
                 case 9:
-                    // 6. Esci
+                    // 9. Esci
                     System.out.println("Arrivederci");
                     return;
                 default:
