@@ -38,11 +38,11 @@ public class Biblioteca {
     }
 
        public void inserisciRisorsa(Risorsa risorsa){
-     for(Risorsa risorsaRisorsa : listaRisorsa){
-         if(listaRisorsa.getCodice().equalsCaseIgnore(risorsaRisorsa.getCodice)){
-             System.out.println("Esiste già una risorsa con questo Codice: "+risorsaRisorsa.getCodice());
-             return;// esci dal metodo
-         }
+        for(Risorsa ris : listaRisorsa){
+            if(ris.getCodice().toLowerCase().equals(risorsa.getCodice().toLowerCase())){
+                System.out.println("Esiste già una risorsa con questo Codice: "+ris.getCodice());
+                return;// esci dal metodo
+            }
      }
      System.out.println("Risorsa Aggiunta");
      listaRisorsa.add(risorsa);
