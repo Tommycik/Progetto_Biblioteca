@@ -24,9 +24,16 @@ public class Main {
 
             int scelta = in.nextInt();
             in.nextLine(); 
+
+            switch (scelta) {
+                case 1:
+                    System.out.print("Inserisci il nome dell'utente: ");
+                    String nomeUtente = in.nextLine();
+                    System.out.print("Inserisci l'ID dell'utente: ");
+                    String idUtente = in.nextLine();
+                    Utente nuovoUtente = new Utente(nomeUtente, idUtente);
+                    
+            }
         }
-        
-
-
     }
 }
