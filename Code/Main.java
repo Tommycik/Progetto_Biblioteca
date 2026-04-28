@@ -14,8 +14,9 @@ public class Main {
         String nome = in.nextLine();
         System.out.print("Inserisci l'ID Utente: ");
         String id = in.nextLine();
-        
+        Risorsa risorsa= new Libro("Il libro di Napoli", 2021, "123456789", "Napoleone Bonaparte");
         Utente utente = new Utente(nome, id);
+        biblioteca.inserisciRisorsa(risorsa);
         while(true){// 2. Menu per inserire una risorsa
             System.out.println("\n--- Menu ---");
             System.out.println("1. Aggiungi Utente");
@@ -26,20 +27,32 @@ public class Main {
 
             int scelta = in.nextInt();
             in.nextLine(); 
-
+            String idUtente;
             switch (scelta) {
                 case 1:
                     System.out.print("Inserisci il nome dell'utente: ");
                     String nomeUtente = in.nextLine();
                     System.out.print("Inserisci l'ID dell'utente: ");
-                    String idUtente = in.nextLine();
+                    idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
                 case 3:
                     // 3. Stampa Inventario
                     biblioteca.stampaInventario();
                     break;
                 case 4:
-                    //mostar lle risorese disponibili
+                    //mostrare risorse disponibili
+                    if(biblioteca.getListaRisorse().isEmpty()){
+                        System.out.println("Nessuna risorsa disponibile");
+                        break;
+                    }
+                    //scegli utente e prendi in prestito una risorsa
+                    System.out.print("Inserisci l'ID dell'utente: ");
+                    idUtente = in.nextLine();
+                    Utente utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
+                    if(utente==null){
+                        System.out.println("Utente non trovato");
+                        break;
+                    }
                     System.out.println("Risorse disponibili:");
                     for(Risorsa ris : biblioteca.getListaRisorse()){
                         if(ris.isDisponibile()){
@@ -58,18 +71,19 @@ public class Main {
                         // Scelta tra le risorse trovate
                         System.out.println("Scegli una risorsa: ");
                         for(int i=0;i<risorse.size();i++){
-                            System.out.println(i+". "+risorse.get(i).getTitolo());
+                            System.out.println(i+": ");
+                            risorse.get(i).visualizzaDettagli();
                         }
                         System.out.print("Inserisci la risorsa: ");
                         int sceltaRisorsa = in.nextInt();
                         in.nextLine();
                         risorsaTrovata = risorse.get(sceltaRisorsa);
-                        utente.prendiInPrestito(risorsaTrovata);
+                        utenteAttivo.prendiInPrestito(risorsaTrovata);
                         //biblioteca.inserisciRisorsa(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     }else{
                         risorsaTrovata = risorse.get(0);
-                        utente.prendiInPrestito(risorsaTrovata);
+                        utenteAttivo.prendiInPrestito(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     }
                     break;
