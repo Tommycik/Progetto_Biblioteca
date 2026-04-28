@@ -3,6 +3,7 @@ public abstract class Risorsa {
     private String titolo;
     private int annoPubblicazione;
     private String codice;
+    private boolean disponibile = true;
     //costruttore
     public Risorsa(String titolo, int annoPubblicazione, String codice) {
         this.titolo = titolo;
@@ -18,6 +19,13 @@ public abstract class Risorsa {
         this.titolo = titolo;
     }
 
+    public boolean isDisponibile() {
+        return disponibile;
+    }
+
+    public void setDisponibile(boolean disponibile) {
+        this.disponibile = disponibile;
+    }
     public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }

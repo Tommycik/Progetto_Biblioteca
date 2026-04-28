@@ -39,6 +39,14 @@ public class Main {
                     biblioteca.stampaInventario();
                     break;
                 case 4:
+                    //mostar lle risorese disponibili
+                    System.out.println("Risorse disponibili:");
+                    for(Risorsa ris : biblioteca.getListaRisorse()){
+                        if(ris.isDisponibile()){
+                            ris.visualizzaDettagli();
+                        }
+                    }
+                    Risorsa risorsaTrovata = null;
                     // 4. Prendi in prestito una risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
                     String nomeRisorsa = in.nextLine();
@@ -55,12 +63,12 @@ public class Main {
                         System.out.print("Inserisci la risorsa: ");
                         int sceltaRisorsa = in.nextInt();
                         in.nextLine();
-                        Risorsa risorsaTrovata = risorse.get(sceltaRisorsa);
+                        risorsaTrovata = risorse.get(sceltaRisorsa);
                         utente.prendiInPrestito(risorsaTrovata);
                         //biblioteca.inserisciRisorsa(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     }else{
-                        Risorsa risorsaTrovata = risorse.get(0);
+                        risorsaTrovata = risorse.get(0);
                         utente.prendiInPrestito(risorsaTrovata);
                         System.out.println("Risorsa Prenotata");
                     }

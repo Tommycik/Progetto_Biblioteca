@@ -21,7 +21,7 @@ public class Biblioteca {
         this.nomeBiblioteca = nomeBiblioteca;
     }
 
-    public ArrayList<Risorsa> getListaRisorsa() {
+    public ArrayList<Risorsa> getListaRisorse() {
         return listaRisorse;
     }
 
@@ -33,7 +33,7 @@ public class Biblioteca {
         this.listaUtenti = listaUtenti;
     }
 
-    public void setListaRisorsa(ArrayList<Risorsa> listaRisorse) {
+    public void setListaRisorse(ArrayList<Risorsa> listaRisorse) {
         this.listaRisorse = listaRisorse;
     }
 

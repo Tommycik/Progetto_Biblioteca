@@ -31,11 +31,13 @@ public class Utente { // classe Utente
     // Metodo per prendere in prestito
     public void prendiInPrestito(Risorsa r) {
         risorseInPrestito.add(r);
+        r.setDisponibile(false);
     }
 
     // Metodo per restituire
     public void restituisciRisorsa(Risorsa r) {
         risorseInPrestito.remove(r);
+        r.setDisponibile(true);
     }
 
     // Metodo per stampare la lista
