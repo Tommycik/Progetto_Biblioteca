@@ -48,7 +48,7 @@ public class Biblioteca {
 
     public void stampaInventario(){
         for (Risorsa risorsa : listaRisorsa){
-           System.out.println( listaRisorsa.visualizzaDettagli());
+           risorsa.visualizzaDettagli();
         }
     }
 
