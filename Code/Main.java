@@ -35,8 +35,10 @@ public class Main {
             int scelta = in.nextInt();
             in.nextLine();
             String idUtente;
-            Utente utenteAttivo;
+            Utente utenteAttivo = null;
             Risorsa risorsaTrovata = null;
+            ArrayList<Risorsa> risorse = null;
+            String nomeRisorsa = null;
             switch (scelta) {
                 case 1:
                     // 1. Aggiungi Utente
@@ -133,8 +135,8 @@ public class Main {
                     risorsaTrovata = null;
                     // 4. Prendi in prestito una risorsa con nome
                     System.out.print("Inserisci il nome della risorsa: ");
-                    String nomeRisorsa = in.nextLine();
-                    ArrayList<Risorsa> risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
+                    nomeRisorsa = in.nextLine();
+                    risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
                     if (risorse.size() == 0) {
                         System.out.println("Risorsa non trovata");
                         break;
@@ -215,6 +217,58 @@ public class Main {
                     System.out.println("Risorsa restituita");
                     break;
                 case 6:
+                    // 6. Stampa risorse utente scelto
+                    // mostra utenti
+                    if (biblioteca.getListaUtenti().isEmpty()) {
+                        System.out.println("Nessun utente presente");
+                        break;
+                    }
+                    System.out.println("Utenti presenti:");
+                    for (Utente u : biblioteca.getListaUtenti()) {
+                        System.out.println("Id: " + u.getIdUtente() + " Nome: " + u.getNome());
+                    }
+
+                    // scegli utente
+                    System.out.print("Inserisci l'ID dell'utente: ");
+                    idUtente = in.nextLine();
+                    utenteAttivo = biblioteca.cercaUtentePerId(idUtente);
+                    // controlla se l'utente esiste
+                    if (utenteAttivo == null) {
+                        System.out.println("Utente non trovato");
+                        break;
+                    }
+                    // stampa lista risorse utente
+                    System.out.println("Risorse prese in prestito:");
+                    utenteAttivo.stampaRisorse();
+                    break;
+                case 7:
+                    // 7. Cerca risorsa
+                    System.out.print("Inserisci il nome della risorsa: ");
+                    nomeRisorsa = in.nextLine();
+                    risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
+                    if (risorse.size() == 0) {
+                        System.out.println("Risorsa non trovata");
+                        break;
+                    } else {
+                        for (Risorsa ris : risorse) {
+                            ris.visualizzaDettagli();
+                        }
+                    }
+                    break;
+                case 8:
+                    // 8. Stampa utenti
+                    if(biblioteca.getListaUtenti().isEmpty()){
+                        System.out.println("Nessun utente presente");
+                        break;
+                    }else{
+                        ArrayList<Utente> utenti = biblioteca.getListaUtenti();
+                        for(Utente u : utenti){
+                            System.out.println("Id: "+u.getIdUtente()+" Nome: "+u.getNome());
+                        }
+                    }
+                    break;
+                    
+                case 9:
                     // 6. Esci
                     System.out.println("Arrivederci");
                     return;
