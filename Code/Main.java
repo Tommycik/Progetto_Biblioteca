@@ -1,6 +1,7 @@
 package Code;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,6 +38,33 @@ public class Main {
                     // 3. Stampa Inventario
                     biblioteca.stampaInventario();
                     break;
+                case 4:
+                    // 4. Prendi in prestito una risorsa con nome
+                    System.out.print("Inserisci il nome della risorsa: ");
+                    String nomeRisorsa = in.nextLine();
+                    ArrayList<Risorsa> risorse = biblioteca.cercaRisorsaPerTitolo(nomeRisorsa);
+                    if(risorse.size()==0){
+                        System.out.println("Risorsa non trovata");
+                        break;
+                    }else if(risorse.size()>1){
+                        // Scelta tra le risorse trovate
+                        System.out.println("Scegli una risorsa: ");
+                        for(int i=0;i<risorse.size();i++){
+                            System.out.println(i+". "+risorse.get(i).getTitolo());
+                        }
+                        System.out.print("Inserisci la risorsa: ");
+                        int sceltaRisorsa = in.nextInt();
+                        in.nextLine();
+                        Risorsa risorsaTrovata = risorse.get(sceltaRisorsa);
+                        utente.prendiInPrestito(risorsaTrovata);
+                        //biblioteca.inserisciRisorsa(risorsaTrovata);
+                        System.out.println("Risorsa Prenotata");
+                    }else{
+                        Risorsa risorsaTrovata = risorse.get(0);
+                        utente.prendiInPrestito(risorsaTrovata);
+                        System.out.println("Risorsa Prenotata");
+                    }
+                    break;
                 case 5:
                     System.out.println("Arrivederci");
                     return;
@@ -47,4 +75,3 @@ public class Main {
             }
         }
     }
-}
