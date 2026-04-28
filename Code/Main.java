@@ -14,15 +14,18 @@ public class Main {
         String id = in.nextLine();
         
         Utente utente = new Utente(nome, id);
+        while(true){// 2. Menu per inserire una risorsa
+            System.out.println("\n--- Menu ---");
+            System.out.println("1. Aggiungi Utente");
+            System.out.println("2. Aggiungi Risorsa");
+            System.out.println("3. Stampa Inventario");
+            System.out.print("4. Prendi in prestito una risorsa: ");
+            System.out.print("5. Esci");
 
-        // 2. Menu per inserire una risorsa
-        System.out.println("\n--- Menu ---");
-        System.out.println("1. Aggiungi Utente");
-        System.out.println("2. Aggiungi Risorsa");
-        System.out.println("3. Stampa Inventario");
-        System.out.print("Prendi in prestito una risorsa: ");
-        int scelta = in.nextInt();
-        in.nextLine(); 
+            int scelta = in.nextInt();
+            in.nextLine(); 
+        }
+        
 
 
     }
