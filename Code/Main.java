@@ -1,7 +1,7 @@
 package Code;
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +34,21 @@ public class Main {
                     System.out.print("Inserisci l'ID dell'utente: ");
                     String idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
+
+                case 2
+                    // 2. Aggiungi Risorsa
+                    System.out.print("Inserisci il titolo della risorsa: ");
+                    String titolo = in.nextLine();
+                    System.out.print("Inserisci l'autore della risorsa: ");
+                    String autore = in.nextLine();
+                    System.out.print("Inserisci l'anno di pubblicazione: ");
+                    int anno = in.nextInt();
+                    in.nextLine(); 
+                    Risorsa nuovaRisorsa = new Risorsa(titolo, autore, anno);
+                    biblioteca.inserisciRisorsa(nuovaRisorsa);
+                    System.out.println("Risorsa aggiunta con successo");
+                    break;
+                
                 case 3:
                     // 3. Stampa Inventario
                     biblioteca.stampaInventario();
