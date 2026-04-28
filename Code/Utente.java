@@ -28,6 +28,9 @@ public class Utente { // classe Utente
     public void setIdUtente(String idUtente) {
         this.idUtente = idUtente;
     }
+    public ArrayList<Risorsa> getRisorseInPrestito() {
+        return risorseInPrestito;
+    }
     // Metodo per prendere in prestito
     public void prendiInPrestito(Risorsa r) {
         risorseInPrestito.add(r);
@@ -44,7 +47,7 @@ public class Utente { // classe Utente
     public void stampaRisorse() {
         System.out.println("Risorse di " + nome + ":");
         for (Risorsa r : risorseInPrestito) {
-            System.out.println("- " + r.getTitolo()); 
+            System.out.println("Titolo: " + r.getTitolo() + "Codice: " + r.getCodice());
         }
     }
 }
