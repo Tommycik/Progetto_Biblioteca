@@ -36,18 +36,39 @@ public class Main {
                     idUtente = in.nextLine();
                     Utente nuovoUtente = new Utente(nomeUtente, idUtente);
 
-                case 2
-                    // 2. Aggiungi Risorsa
-                    System.out.print("Inserisci il titolo della risorsa: ");
-                    String titolo = in.nextLine();
-                    System.out.print("Inserisci l'autore della risorsa: ");
-                    String autore = in.nextLine();
-                    System.out.print("Inserisci l'anno di pubblicazione: ");
-                    int anno = in.nextInt();
-                    in.nextLine(); 
-                    Risorsa nuovaRisorsa = new Risorsa(titolo, autore, anno);
-                    biblioteca.inserisciRisorsa(nuovaRisorsa);
-                    System.out.println("Risorsa aggiunta con successo");
+                case 2:
+                    System.out.println("Che tipo di risorsa vuoi inserire?");
+                    System.out.println("1. Libro");
+                    System.out.println("2. Ebook");
+                    System.out.println("3. Rivista");
+                    int tipo = in.nextInt();
+                    in.nextLine();
+
+                    Risorsa nuovaRisorsa = null;
+
+                    switch (tipo) {
+                        case 1:
+                            System.out.print("Inserisci l'autore: ");
+                            String autore = in.nextLine();
+                            break;
+                        case 2:
+                            System.out.print("Inserisci il formato (PDF/EPUB): ");
+                            String formato = in.nextLine();
+                            break;
+                        case 3:
+                            System.out.print("Inserisci il numero della rivista: ");
+                            int num = in.nextInt();
+                            in.nextLine();
+                            break;
+                        default:
+                            System.out.println("Tipo non valido.");
+                            break;
+                    }
+
+                    if (nuovaRisorsa != null) {
+                        biblioteca.inserisciRisorsa(nuovaRisorsa);
+                        System.out.println("Risorsa aggiunta con successo!");
+                    }
                     break;
                 
                 case 3:
